@@ -39,34 +39,56 @@ scrollTopButton.addEventListener('click', () => {
         behavior: 'smooth'
     });
 });
-const header = document.getElementById('main-header');
-const nav = document.getElementById('main-nav');
-const heroSection = document.querySelector('section'); // assumes hero is first section
 
-function onScroll() {
-    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-    if (window.scrollY > heroBottom - 80) {
-        header.classList.add('bg-white', 'shadow-lg');
-        header.classList.remove('bg-transparent');
-        nav.classList.add('text-black');
-        nav.classList.remove('text-white');
-        // Update nav link hover for dark text
-        nav.querySelectorAll('a').forEach(a => {
-            a.classList.remove('hover:bg-white/10');
-            a.classList.add('hover:bg-gray-100');
-        });
-    } else {
-        header.classList.remove('bg-white', 'shadow-lg');
-        header.classList.add('bg-transparent');
-        nav.classList.remove('text-black');
-        nav.classList.add('text-white');
-        // Update nav link hover for light text
-        nav.querySelectorAll('a').forEach(a => {
-            a.classList.add('hover:bg-white/10');
-            a.classList.remove('hover:bg-gray-100');
-        });
-    }
-}
+// --- Dynamic header scroll effect for shadow DOM header ---
+window.addEventListener('DOMContentLoaded', () => {
+    // Wait for the header-component to be defined and rendered
+    customElements.whenDefined('header-component').then(() => {
+        const headerComponent = document.querySelector('header-component');
+        if (!headerComponent) return;
 
-window.addEventListener('scroll', onScroll);
-window.addEventListener('DOMContentLoaded', onScroll);
+        // Wait for the shadow DOM to be ready
+        const waitForHeader = () => {
+            const shadow = headerComponent.shadowRoot;
+            if (!shadow) {
+                setTimeout(waitForHeader, 10);
+                return;
+            }
+            const header = shadow.getElementById('main-header');
+            const nav = shadow.getElementById('main-nav');
+            // Find the hero section by id or fallback to first section
+            const heroSection = document.querySelector('.hero, #hero, section');
+            if (!header || !nav || !heroSection) {
+                setTimeout(waitForHeader, 10);
+                return;
+            }
+
+            function onScroll() {
+                const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                if (window.scrollY > heroBottom - 80) {
+                    header.classList.add('bg-white', 'shadow-lg');
+                    header.classList.remove('bg-transparent');
+                    nav.classList.add('text-black');
+                    nav.classList.remove('text-white');
+                    nav.querySelectorAll('a').forEach(a => {
+                        a.classList.remove('hover:bg-white/10');
+                        a.classList.add('hover:bg-gray-100');
+                    });
+                } else {
+                    header.classList.remove('bg-white', 'shadow-lg');
+                    header.classList.add('bg-transparent');
+                    nav.classList.remove('text-black');
+                    nav.classList.add('text-white');
+                    nav.querySelectorAll('a').forEach(a => {
+                        a.classList.add('hover:bg-white/10');
+                        a.classList.remove('hover:bg-gray-100');
+                    });
+                }
+            }
+
+            window.addEventListener('scroll', onScroll);
+            onScroll();
+        };
+        waitForHeader();
+    });
+});
