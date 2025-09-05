@@ -5,104 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeanettes Möbeltapetsering</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
-    <style>
-        body,
-        a,
-        p {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
 
-        h1,
-        h2,
-        h3,
-        label {
-            font-family: 'Libre Baskerville', serif;
-        }
+    <!-- Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-        .scroll-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            z-index: 1000;
-        }
+    <!-- Custom web components -->
+    <script type="module" src="./components/index.js"></script>
 
-        .scroll-to-top.visible {
-            opacity: 1;
-        }
+    <!-- Custom script -->
+    <script src="./scripts/script.js"></script>
 
-        .message-box {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #f4f4f4;
-            color: black;
-            padding: 1.5rem 2.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-            font-family: 'Libre Baskerville', serif;
-        }
-
-        .message-box.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-item img {
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .header-scrolled {
-            background-color: white !important;
-        }
-
-        .nav-scrolled {
-            color: #111 !important;
-        }
-
-        .nav-scrolled a {
-            color: #111 !important;
-        }
-
-        .gallery-image {
-            width: 100%;
-            height: auto;
-            transition: transform 0.3s ease-in-out;
-            background: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-image img {
-            width: 100%;
-            height: 12rem;
-            object-fit: cover;
-            display: block;
-        }
-
-        .gallery-image .p-5 {
-            position: relative;
-            z-index: 2;
-            background: white;
-        }
-    </style>
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body class="bg-[#F4F4F4] text-gray-900">
@@ -112,29 +29,7 @@
         Tack för din förfrågan! <br> Jag återkommer så snart jag kan.
     </div>
 
-    <!-- Header & Navigation -->
-    <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-transparent transition-all duration-300">
-        <nav id="main-nav"
-            class="container mx-auto px-6 py-3 flex items-center justify-between text-white transition-all duration-300">
-            <!-- Left: Title -->
-            <a href="#" style="font-family: 'Libre Baskerville', serif;"
-                class="text-xl rounded-md p-2 hover:bg-white/10 transition-colors whitespace-nowrap">
-                Jeanettes Möbeltapetsering
-            </a>
-            <!-- Center: Logo -->
-            <img src="images/logo/logo.png" alt="Jeanettes Möbeltapetsering Logo" class="h-36 w-auto mx-8">
-            <!-- Right: Nav links -->
-            <div style="font-family: 'Libre Baskerville', serif;" class="flex space-x-4 md:space-x-6">
-                <a href="#about" class="transition-colors rounded-md p-2 hover:bg-white/10">Om mig</a>
-                <a href="#gallery" class="transition-colors rounded-md p-2 hover:bg-white/10">Galleri</a>
-                <a href="#contact" class="transition-colors rounded-md p-2 hover:bg-white/10">Kontakt</a>
-                <a href="https://www.instagram.com/jeanettesmobeltapetsering" target="_blank" rel="noopener"
-                    class="transition-colors rounded-full p-2 hover:bg-white/10 flex items-center"
-                    aria-label="Instagram">
-                </a>
-            </div>
-        </nav>
-    </header>
+    <header-component></header-component>
 
     <!-- Hero Section -->
     <section class="relative py-72 px-6 text-left"
@@ -270,7 +165,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="py-24 px-6 bg-[#f4f4f4]"
-            style="background-image: url('images/contact/tyger.png'); background-size: cover; background-position: center;">
+            style="background-image: url('images/contact/trad.jpg'); background-size: cover; background-position: center;">
         <div class="bg-[#f4f4f4] rounded-lg opacity- container mx-auto flex flex-col md:flex-row items-stretch md:space-x-16">
             <!-- Left column: contact info and image -->
             <div class="md:w-1/2 flex flex-col bg-[#f4f4f4] justify-center p-0 md:p-10 rounded-xl shadow-none">
@@ -337,69 +232,7 @@
         </div>
     </section>
 
-<footer class="bg-white py-10 px-6 border-t border-gray-200">
-        <div class="container mx-auto flex flex-col gap-8">
-        <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-4">
-            <div>
-                <img src="images/footer/sverigestapetserarmästare.jpg" alt="Certifierad hos Sveriges Tapetserarmästar"
-                    class="h-20 md:h-28 w-auto object-contain mb-2">
-            </div>
-            <div>
-                <img src="images/footer/gesall.png" alt="Gesällbrev" class="h-16 md:h-24 w-auto object-contain mb-2">
-            </div>
-        </div>
-        <div class="flex flex-col lg:flex-row lg:justify-between gap-8">
-
-            <div class="flex flex-col items-center md:items-start lg:w-1/2">
-                <div class="flex flex-col md:flex-row items-center gap-4 mb-4">
-                    <img src="images/logo/logo.png" alt="Jeanettes Möbeltapetsering Logo"
-                        class="h-36 w-auto object-contain">
-                    <div class="text-center md:text-left">
-                        <h3 class="text-gray-900 font-semibold mb-1">Jeanettes Möbeltapetsering</h3>
-                        <p class="text-gray-700">Sandsjövägen 1A</p>
-                        <p class="text-gray-700">57636 Sävsjö</p>
-                        <p class="text-gray-700">Org nr: 560610-XXXX</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row lg:w-1/2 justify-between lg:justify-end gap-8 text-center md:text-left">
-                <div class="lg:w-1/2">
-                    <p class="text-gray-700 flex items-center gap-2 mb-1 justify-center md:justify-start">
-                        <i data-lucide="phone" class="w-4 h-4"></i>
-                        070 330 8497
-                    </p>
-                    <p class="text-gray-700 flex items-center gap-2 mb-1 justify-center md:justify-start">
-                        <i data-lucide="mail" class="w-4 h-4"></i>
-                        <a href="mailto:jeajoh70@gmail.com" class="text-[#145A53] underline hover:text-black transition-colors">
-                            jeajoh70@gmail.com
-                        </a>
-                    </p>
-                    <p class="text-gray-700 flex items-center gap-2 mb-1 justify-center md:justify-start">
-                        <i data-lucide="clock" class="w-4 h-4"></i>
-                        Tors &amp; Fre 10:00–18:00
-                    </p>
-                </div>
-                <div class="lg:w-1/2">
-                    <p class="text-gray-700 flex items-center gap-2 mb-1 justify-center md:justify-start">
-                        <i data-lucide="instagram" class="w-4 h-4"></i>
-                        <a href="https://www.instagram.com/jeanettesmobeltapetsering" target="_blank" rel="noopener"
-                            class="text-[#145A53] underline hover:text-black transition-colors">
-                            Instagram
-                        </a>
-                    </p>
-                    <p class="text-gray-700 flex items-center gap-2 justify-center md:justify-start">
-                        <i data-lucide="facebook" class="w-4 h-4"></i>
-                        <a href="https://www.facebook.com/jeanettesmobeltapetsering" target="_blank" rel="noopener"
-                            class="text-[#145A53] underline hover:text-black transition-colors">
-                            Facebook
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+    <footer-component></footer-component>
 
     <!-- Scroll to Top Button -->
     <button id="scroll-to-top-btn"
@@ -408,81 +241,6 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
     </button>
-
-    <script>
-        lucide.createIcons();
-        // JavaScript for form submission and message box
-        const contactForm = document.getElementById('contact-form');
-        const messageBox = document.getElementById('message-box');
-
-        contactForm.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Here you would typically send the form data to a server
-            // For this example, we'll just simulate a successful submission
-            console.log('Form submission simulated.');
-
-            // Show the message box
-            messageBox.classList.add('visible');
-
-            // Hide the message box after 3 seconds
-            setTimeout(() => {
-                messageBox.classList.remove('visible');
-            }, 3000);
-
-            // Reset the form fields
-            contactForm.reset();
-        });
-
-        // JavaScript for scroll-to-top button
-        const scrollTopButton = document.getElementById('scroll-to-top-btn');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 200) {
-                scrollTopButton.classList.add('visible');
-            } else {
-                scrollTopButton.classList.remove('visible');
-            }
-        });
-
-        scrollTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        const header = document.getElementById('main-header');
-        const nav = document.getElementById('main-nav');
-        const heroSection = document.querySelector('section'); // assumes hero is first section
-
-        function onScroll() {
-            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-            if (window.scrollY > heroBottom - 80) {
-                header.classList.add('bg-white', 'shadow-lg');
-                header.classList.remove('bg-transparent');
-                nav.classList.add('text-black');
-                nav.classList.remove('text-white');
-                // Update nav link hover for dark text
-                nav.querySelectorAll('a').forEach(a => {
-                    a.classList.remove('hover:bg-white/10');
-                    a.classList.add('hover:bg-gray-100');
-                });
-            } else {
-                header.classList.remove('bg-white', 'shadow-lg');
-                header.classList.add('bg-transparent');
-                nav.classList.remove('text-black');
-                nav.classList.add('text-white');
-                // Update nav link hover for light text
-                nav.querySelectorAll('a').forEach(a => {
-                    a.classList.add('hover:bg-white/10');
-                    a.classList.remove('hover:bg-gray-100');
-                });
-            }
-        }
-
-        window.addEventListener('scroll', onScroll);
-        window.addEventListener('DOMContentLoaded', onScroll);
-    </script>
 </body>
 
 </html>
