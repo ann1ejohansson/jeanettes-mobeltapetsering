@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeanettes Möbeltapetsering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+    <style>
+        body,
+        a,
+        p {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        label {
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f4f4f4;
+            color: black;
+            padding: 1.5rem 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        .message-box.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item img {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .header-scrolled {
+            background-color: white !important;
+        }
+
+        .nav-scrolled {
+            color: #111 !important;
+        }
+
+        .nav-scrolled a {
+            color: #111 !important;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 12rem;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-image .p-5 {
+            position: relative;
+            z-index: 2;
+            background: white;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F4F4F4] text-gray-900">
+
+    <!-- Message Box for form submission -->
+    <div id="message-box" class="message-box">
+        Tack för din förfrågan! <br> Jag återkommer så snart jag kan.
+    </div>
+
+    <!-- Header & Navigation -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 bg-transparent transition-all duration-300">
+        <nav id="main-nav"
+            class="container mx-auto px-6 py-3 flex items-center justify-between text-white transition-all duration-300">
+            <!-- Left: Title -->
+            <a href="#" style="font-family: 'Libre Baskerville', serif;"
+                class="text-xl rounded-md p-2 hover:bg-white/10 transition-colors whitespace-nowrap">
+                Jeanettes Möbeltapetsering
+            </a>
+            <!-- Center: Logo -->
+            <img src="images/logo-new-1-rotated.png" alt="Jeanettes Möbeltapetsering Logo" class="h-36 w-auto mx-8">
+            <!-- Right: Nav links -->
+            <div style="font-family: 'Libre Baskerville', serif;" class="flex space-x-4 md:space-x-6">
+                <a href="#about" class="transition-colors rounded-md p-2 hover:bg-white/10">Om mig</a>
+                <a href="#gallery" class="transition-colors rounded-md p-2 hover:bg-white/10">Galleri</a>
+                <a href="#contact" class="transition-colors rounded-md p-2 hover:bg-white/10">Kontakt</a>
+                <a href="https://www.instagram.com/jeanettesmobeltapetsering" target="_blank" rel="noopener"
+                    class="transition-colors rounded-full p-2 hover:bg-white/10 flex items-center"
+                    aria-label="Instagram">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-72 px-6 text-left"
+        style="background-image: url('images/jj.JPG'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-black/70"></div> <!-- semi-transparent overlay for readability -->
+        <div class="container mx-auto relative z-10 flex flex-col items-start">
+            <h1 class="text-4xl md:text-5xl text-white mb-6 text-left md:ml-16 leading-tight drop-shadow-lg">
+                Jeanette Johansson <br> Möbeltapetsering i Sävsjö
+            </h1>
+            <p class="text-small md:text-small text-white mb-8 max-w-3xl mx-auto md:ml-16">
+                Upptäck konsten att förvandla möbler. <br>
+                Vi tapetserar inte bara om—vi skapar mästerverk, ett stygn i taget.
+            </p>
+            <a href="#contact"
+                class="bg-[#ffffff] text-black font-bold py-4 px-10 rounded-full shadow-xl transition-transform transform hover:scale-105 md:ml-16">
+                Kontakta mig
+            </a>
+        </div>
+    </section>
+
+    <section id="about"
+        class="bg-gradient-to-br from-white via-gray-50 to-[#f4f4f4] py-24 px-6 relative overflow-hidden">
+        <div class="container mx-auto flex flex-col md:flex-row items-center md:space-x-16 relative z-20">
+            <div class="md:w-1/2 mb-8 md:mb-0 flex justify-center relative min-h-[26rem]">
+                <img src="images/inprogress.JPG" alt="Vårt Hantverk"
+                    class="absolute left-0 top-4 w-60 md:w-80 rounded-xl rotate-[-8deg] z-10 border-4 border-white shadow-xl">
+                <img src="images/inprogress-2.JPG" alt="Arbete pågår"
+                    class="absolute left-40 top-44 w-52 md:w-64 rounded-xl rotate-[7deg] z-20 border-4 border-white shadow-xl">
+                <img src="images/tools.png" alt="" aria-hidden="true"
+                    class="absolute left-80 top-0 w-48 md:w-64 z-30 drop-shadow-2xl pointer-events-none select-none">
+            </div>
+            <div class="md:w-1/2 text-right">
+                <h2 class="text-3xl md:text-xl text-black mb-6">Hantverk & Passion</h2>
+                <p class="text-gray-700 mb-4 leading-relaxed text-lg">
+
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg">
+
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="bg-white py-20 px-6">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl text-black mb-10">Tjänster</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-image bg-white overflow-hidden gallery-item">
+                    <img src="images/helrenovering.png" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl mb-1 text-gray-900">Helrenovering</h3>
+                        <p class="text-gray-600 text-sm">När stoppningen har gjort sitt bygger jag upp möbeln från
+                            grunden med nya material och klär den i ett tyg du själv väljer. Resultatet blir som en helt
+                            ny möbel – redo för många års användning.
+                        </p>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="gallery-image bg-white overflow-hidden gallery-item">
+                    <img src="images/omklädsel.JPG" alt="Velvet sofa reupholstery" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl mb-1 text-gray-900">Omklädsel</h3>
+                        <p class="text-gray-600 text-sm">Är stoppningen fortfarande i gott skick? Då kan vi enkelt
+                            förnya möbeln med ett nytt tyg. Ett perfekt alternativ om du vill ge din favoritmöbel ett
+                            nytt uttryck. Jag klär även om stolsitsar.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="gallery-image bg-white overflow-hidden gallery-item">
+                    <img src="images/skinnstolar.jpg" alt="Funky footstool with patterned fabric"
+                        class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl mb-1 text-gray-900">Skinn</h3>
+                        <p class="text-gray-600 text-sm">Slitet skinn behöver inte betyda slutet för din möbel. Jag
+                            rengör, behandlar eller byter ut skinnet så att möbeln får tillbaka sin lyster och komfort.
+                        </p>
+                    </div>
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="gallery-image bg-white overflow-hidden gallery-item">
+                    <img src="images/tyger.jpg" alt="" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl mb-1 text-gray-900">Tyger</h3>
+                        <p class="text-gray-600 text-sm">Jag erbjuder ett brett sortiment av tyger i olika stilar och
+                            kvaliteter som du kan beställa metersvis.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="gallery-image bg-white overflow-hidden gallery-item">
+                    <img src="images/textiler.JPG" alt=" class=" w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl mb-1 text-gray-900">Textilier</h3>
+                        <p class="text-gray-600 text-sm">Förutom möbler syr jag också gardiner, kuddar och andra
+                            textilier. Du kan välja bland färdiga produkter i verkstaden eller beställa måttsytt i det
+                            tyg du själv vill.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 6 -->
+                <div class="gallery-image bg-white overflow-hidden gallery-item">
+                    <img src="images/barnfåtölj.png" alt=" class=" w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl mb-1 text-gray-900">Barnfåtöljer</h3>
+                        <p class="text-gray-600 text-sm">"Fåtöljer i miniatyr – byggda från grunden med stommar
+                            tillverkade av XX i XX, och klädda efter dina önskemål." </p>
+                    </div>
+                </div>
+                <!-- Gallery Item 7 -->
+                <div class="gallery-image bg-white overflow-hidden gallery-item">
+                    <img src="images/flätad.png" alt=" class=" w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl mb-1 text-gray-900">Flätade fåtöljer</h3>
+                        <p class="text-gray-600 text-sm">Jag ger nytt liv åt dina fåtöljer genom att byta ut eller lägga
+                            ny sadelgjord, oavsett om det gäller en sliten sits eller en helt tom stomme.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 8 -->
+                <div class="gallery-image bg-white overflow-hidden gallery-item">
+                    <img src="images/baslåda.png" alt=" class=" w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl mb-1 text-gray-900">Annat!</h3>
+                        <p class="text-gray-600 text-sm">Har du en idé, ett projekt eller en möbel som inte passar in i
+                            någon av kategorierna? <a href="#contact"
+                                class="text-[#145A53] underline hover:text-black transition-colors">Berätta!</a> Jag
+                            älskar kreativa utmaningar och hittar gärna en lösning
+                            tillsammans med dig.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-[#f4f4f4]"
+            style="background-image: url('images/tyger.png'); background-size: cover; background-position: center;">
+        <div class="bg-[#f4f4f4] rounded-lg opacity- container mx-auto flex flex-col md:flex-row items-stretch md:space-x-16">
+            <!-- Left column: contact info and image -->
+            <div class="md:w-1/2 flex flex-col bg-[#f4f4f4] justify-center p-0 md:p-10 rounded-xl shadow-none">
+                <div class="mb-8">
+                    <h2 class="text-2xl md:text-2xl text-black mb-6">Kontakta mig</h2>
+                    <p class="text-gray-800 mb-6 text-small leading-relaxed">
+                        Behöver din möbel nytt liv? Skicka in din prisförfrågan här så återkommer jag inom kort. <br>
+                        Du kan också kontakta mig direkt eller besöka min verkstad. <br>
+                    </p>
+                    <p class="text-gray-800 mb-6 text-small leading-relaxed">
+                        Telefon: 070 330 8497 <br>
+                        E-post: <a href="mailto:jeajoh70@gmail.com" class="text-[#145A53] underline">jeajoh70@gmail.com
+                        </a>
+                    </p>
+                    <p class="text-gray-800 mb-6 text-small leading-relaxed">
+                        Sansjövägen 15, <br>573 34 Sävsjö <br>
+                        Jag har öppet torsdagar och fredagar 10:00 - 18:00.
+                    </p>
+                    <p class="text-gray-800 mb-6 text-small leading-relaxed flex items-center gap-2">
+                        <a href="https://www.instagram.com/jeanettesmobeltapetsering" target="_blank" rel="noopener"
+                            class="text-[#145A53] underline hover:text-black transition-colors">
+                            instagram </a>
+                            <a href="https://www.instagram.com/jeanettesmobeltapetsering" target="_blank" rel="noopener"
+                            class="text-[#145A53] underline hover:text-black transition-colors">
+                            facebook </a>
+
+                    </p>
+                </div>
+            </div>
+            <!-- Right column: contact form -->
+            <div class="md:w-1/2 bg-[#f4f4f4] p-8 md:p-10 rounded-xl shadow-none flex flex-col justify-center">
+                <form id="contact-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 font-semibold mb-2">Ditt Namn</label>
+                        <input type="text" id="name" name="name"
+                            class="w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-black"
+                            required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">E-post</label>
+                        <input type="email" id="email" name="email"
+                            class="w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-black"
+                            required>
+                    </div>
+                    <div>
+                        <label for="phone-number" class="block text-gray-700 font-semibold mb-2">Telefonnummber</label>
+                        <input type="phone-number" id="phone-number" name="phone-number"
+                            class="w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-black"
+                            required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 font-semibold mb-2">Beskriv din möbel /
+                            förfrågan</label>
+                        <textarea id="message" name="message" rows="5"
+                            class="w-full p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-black"
+                            required></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-black text-white font-bold py-3 rounded-lg hover:bg-gray-900 transition-colors shadow-lg">
+                        Skicka
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+<footer class="bg-white py-10 px-6 border-t border-gray-200">
+        <div class="container mx-auto flex flex-col gap-8">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-4">
+            <div>
+                <img src="images/sverigestapetserarmästare.jpg" alt="Certifierad hos Sveriges Tapetserarmästar"
+                    class="h-20 md:h-28 w-auto object-contain mb-2">
+            </div>
+            <div>
+                <img src="images/gesäll.png" alt="Gesällbrev" class="h-16 md:h-24 w-auto object-contain mb-2">
+            </div>
+        </div>
+        <div class="flex flex-col lg:flex-row lg:justify-between gap-8">
+
+            <div class="flex flex-col items-center md:items-start lg:w-1/2">
+                <div class="flex flex-col md:flex-row items-center gap-4 mb-4">
+                    <img src="images/logo-new-1-rotated.png" alt="Jeanettes Möbeltapetsering Logo"
+                        class="h-36 w-auto object-contain">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-gray-900 font-semibold mb-1">Jeanettes Möbeltapetsering</h3>
+                        <p class="text-gray-700">Sandsjövägen 15</p>
+                        <p class="text-gray-700">573 34 Sävsjö</p>
+                        <p class="text-gray-700">Org nr: 560610-XXXX</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row lg:w-1/2 justify-between lg:justify-end gap-8 text-center md:text-left">
+                <div class="lg:w-1/2">
+                    <p class="text-gray-700 flex items-center gap-2 mb-1 justify-center md:justify-start">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                        070 330 8497
+                    </p>
+                    <p class="text-gray-700 flex items-center gap-2 mb-1 justify-center md:justify-start">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        <a href="mailto:jeajoh70@gmail.com" class="text-[#145A53] underline hover:text-black transition-colors">
+                            jeajoh70@gmail.com
+                        </a>
+                    </p>
+                    <p class="text-gray-700 flex items-center gap-2 mb-1 justify-center md:justify-start">
+                        <i data-lucide="clock" class="w-4 h-4"></i>
+                        Tors &amp; Fre 10:00–18:00
+                    </p>
+                </div>
+                <div class="lg:w-1/2">
+                    <p class="text-gray-700 flex items-center gap-2 mb-1 justify-center md:justify-start">
+                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                        <a href="https://www.instagram.com/jeanettesmobeltapetsering" target="_blank" rel="noopener"
+                            class="text-[#145A53] underline hover:text-black transition-colors">
+                            Instagram
+                        </a>
+                    </p>
+                    <p class="text-gray-700 flex items-center gap-2 justify-center md:justify-start">
+                        <i data-lucide="facebook" class="w-4 h-4"></i>
+                        <a href="https://www.facebook.com/jeanettesmobeltapetsering" target="_blank" rel="noopener"
+                            class="text-[#145A53] underline hover:text-black transition-colors">
+                            Facebook
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top-btn"
+        class="scroll-to-top bg-black text-white p-4 rounded-full shadow-lg hover:bg-[#0B3A36] transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <script>
+        lucide.createIcons();
+        // JavaScript for form submission and message box
+        const contactForm = document.getElementById('contact-form');
+        const messageBox = document.getElementById('message-box');
+
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Here you would typically send the form data to a server
+            // For this example, we'll just simulate a successful submission
+            console.log('Form submission simulated.');
+
+            // Show the message box
+            messageBox.classList.add('visible');
+
+            // Hide the message box after 3 seconds
+            setTimeout(() => {
+                messageBox.classList.remove('visible');
+            }, 3000);
+
+            // Reset the form fields
+            contactForm.reset();
+        });
+
+        // JavaScript for scroll-to-top button
+        const scrollTopButton = document.getElementById('scroll-to-top-btn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                scrollTopButton.classList.add('visible');
+            } else {
+                scrollTopButton.classList.remove('visible');
+            }
+        });
+
+        scrollTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        const header = document.getElementById('main-header');
+        const nav = document.getElementById('main-nav');
+        const heroSection = document.querySelector('section'); // assumes hero is first section
+
+        function onScroll() {
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+            if (window.scrollY > heroBottom - 80) {
+                header.classList.add('bg-white', 'shadow-lg');
+                header.classList.remove('bg-transparent');
+                nav.classList.add('text-black');
+                nav.classList.remove('text-white');
+                // Update nav link hover for dark text
+                nav.querySelectorAll('a').forEach(a => {
+                    a.classList.remove('hover:bg-white/10');
+                    a.classList.add('hover:bg-gray-100');
+                });
+            } else {
+                header.classList.remove('bg-white', 'shadow-lg');
+                header.classList.add('bg-transparent');
+                nav.classList.remove('text-black');
+                nav.classList.add('text-white');
+                // Update nav link hover for light text
+                nav.querySelectorAll('a').forEach(a => {
+                    a.classList.add('hover:bg-white/10');
+                    a.classList.remove('hover:bg-gray-100');
+                });
+            }
+        }
+
+        window.addEventListener('scroll', onScroll);
+        window.addEventListener('DOMContentLoaded', onScroll);
+    </script>
+</body>
+
+</html>
